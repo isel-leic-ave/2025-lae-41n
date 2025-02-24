@@ -1,0 +1,74 @@
+Compiled from "Person.kt"
+public final class Person {
+  private java.lang.String name;
+
+  private int age;
+
+  private java.lang.String country;
+
+  public Person(java.lang.String, int, java.lang.String);
+    Code:
+       0: aload_1
+       1: ldc           #9                  // String name
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_3
+       7: ldc           #17                 // String country
+       9: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: aload_0
+      13: invokespecial #20                 // Method java/lang/Object."<init>":()V
+      16: aload_0
+      17: aload_1
+      18: putfield      #23                 // Field name:Ljava/lang/String;
+      21: aload_0
+      22: iload_2
+      23: putfield      #27                 // Field age:I
+      26: aload_0
+      27: aload_3
+      28: putfield      #29                 // Field country:Ljava/lang/String;
+      31: return
+
+  public final java.lang.String getName();
+    Code:
+       0: aload_0
+       1: getfield      #23                 // Field name:Ljava/lang/String;
+       4: areturn
+
+  public final void setName(java.lang.String);
+    Code:
+       0: aload_1
+       1: ldc           #37                 // String <set-?>
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_0
+       7: aload_1
+       8: putfield      #23                 // Field name:Ljava/lang/String;
+      11: return
+
+  public final int getAge();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field age:I
+       4: ireturn
+
+  public final void setAge(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #27                 // Field age:I
+       5: return
+
+  public final java.lang.String getCountry();
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field country:Ljava/lang/String;
+       4: areturn
+
+  public final void setCountry(java.lang.String);
+    Code:
+       0: aload_1
+       1: ldc           #37                 // String <set-?>
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_0
+       7: aload_1
+       8: putfield      #29                 // Field country:Ljava/lang/String;
+      11: return
+}
