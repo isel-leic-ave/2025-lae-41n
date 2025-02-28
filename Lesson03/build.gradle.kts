@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "2.1.10"
 }
 
-group = "isel.lae.i41n"
+group = "isel.lae.i43d"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    // Kotlin reflection
+    implementation(kotlin("reflect"))
     testImplementation(kotlin("test"))
 }
 
