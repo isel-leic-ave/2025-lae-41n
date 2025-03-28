@@ -1,0 +1,22 @@
+Compiled from "Object.kt"
+public final class Foo {
+  public static final Foo INSTANCE;
+
+  private Foo();
+    Code:
+       0: aload_0
+       1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public final void m1();
+    Code:
+       0: return
+
+  static {};
+    Code:
+       0: new           #2                  // class Foo
+       3: dup
+       4: invokespecial #13                 // Method "<init>":()V
+       7: putstatic     #16                 // Field INSTANCE:LFoo;
+      10: return
+}
