@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.10"
+    id("me.champeau.jmh") version "0.7.3"
 }
 
 group = "isel.lae.i43d"
