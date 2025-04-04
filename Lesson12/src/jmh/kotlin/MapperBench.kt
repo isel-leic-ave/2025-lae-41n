@@ -11,7 +11,7 @@ open class MapperBench {
     val courseInternal = CourseInternal("LAE", 4, "LEIC")
     val courseExternal = CourseExt("LAE", 4, "LEIC")
 
-    @Benchmark
+    //@Benchmark
     fun benchmarkManualMapper() = mapCourseInternalToCourseExternal(courseInternal)
 
     @Benchmark
