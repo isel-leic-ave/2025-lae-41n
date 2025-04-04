@@ -12,7 +12,8 @@ class MapperTests {
     @Test
     fun `Should Map ExternalCourse To InternalCourse`() {
         var cInternal: Any? = mapTo(courseExternal, CourseInternal::class)
-        
+        var cInternal1: Any? = mapTo(courseExternal, CourseInternal::class)
+
         assertNotNull(cInternal)
         assertEquals(CourseInternal::class, cInternal::class)
 
