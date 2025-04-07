@@ -2,7 +2,7 @@ plugins {
     id("java")
 }
 
-group = "isel.lae.i43d"
+group = "isel.lae.i41n"
 version = "1.0-SNAPSHOT"
 
 repositories {

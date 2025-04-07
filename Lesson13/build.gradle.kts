@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "2.1.10"
+    kotlin("jvm")
     id("me.champeau.jmh") version "0.7.3"
 }
 
-group = "isel.lae.i43d"
+group = "isel.lae.i41n"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -20,5 +20,5 @@ tasks.test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(22)
 }

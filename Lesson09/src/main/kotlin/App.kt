@@ -8,12 +8,6 @@ import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
 import kotlin.reflect.full.memberFunctions
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
-}
 
 
 class CourseExt(val name: String, val semester: Int,val  programme: String) {}
