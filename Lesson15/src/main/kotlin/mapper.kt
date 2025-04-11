@@ -16,13 +16,13 @@ data class MapperReflection(val constructor: KFunction<Any>, val paramToProp: Ma
 
 
 
-class SimpleMapper(val srcRep: KClass<*>, val dstRep: KClass<*>) {
+open class SimpleMapperReflect(val srcRep: KClass<*>, val dstRep: KClass<*>) : Mapper<Any, Any> {
     companion object {
-        private val mappers: MutableMap<MapperTypes, SimpleMapper> = mutableMapOf()
-        fun getMapperFor(src: KClass<*>, dst: KClass<*>): SimpleMapper {
+        private val mappers: MutableMap<MapperTypes, SimpleMapperReflect> = mutableMapOf()
+        fun getMapperFor(src: KClass<*>, dst: KClass<*>): SimpleMapperReflect {
             val mt = MapperTypes(src, dst)
             return mappers.getOrElse(mt) {
-                val sm = SimpleMapper(src, dst)
+                val sm = SimpleMapperReflect(src, dst)
                 mappers[mt] = sm
                 sm
             }
@@ -41,7 +41,7 @@ class SimpleMapper(val srcRep: KClass<*>, val dstRep: KClass<*>) {
 
 
 
-    public fun mapTo(src: Any): Any {
+    override fun mapTo(src: Any): Any {
         val srcRep: KClass<*> = src::class
 
         val arguments: Map<KParameter, Any?> = mapperReflection.paramToProp.mapValues { (param, valueGetter) ->
@@ -61,7 +61,7 @@ class SimpleMapper(val srcRep: KClass<*>, val dstRep: KClass<*>) {
                 { src  ->
                     val value = propValueGetter(src)
                     if(value != null) {
-                        val mapper: SimpleMapper = getMapperFor(value::class, param.type.classifier as KClass<*>)
+                        val mapper: SimpleMapperReflect = getMapperFor(value::class, param.type.classifier as KClass<*>)
                         mapper.mapTo(value)
                     } else
                         null
@@ -73,5 +73,9 @@ class SimpleMapper(val srcRep: KClass<*>, val dstRep: KClass<*>) {
     }
 
 
+}
+
+interface Mapper<S, D> {
+    fun mapTo(src: S): D;
 }
 

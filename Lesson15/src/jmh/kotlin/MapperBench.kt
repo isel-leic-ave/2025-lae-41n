@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 open class MapperBench {
     val courseInternal = CourseInternal("LAE", 4, "LEIC")
     val courseExternal = CourseExt("LAE", 4, "LEIC")
-    val mapper = SimpleMapper.getMapperFor(CourseInternal::class, CourseExt::class)
+    val mapper = SimpleMapperReflect.getMapperFor(CourseInternal::class, CourseExt::class)
 
     @Benchmark
     fun benchmarkManualMapper() = mapCourseInternalToCourseExternal(courseInternal)
