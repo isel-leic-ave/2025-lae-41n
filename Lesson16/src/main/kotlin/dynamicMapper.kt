@@ -107,28 +107,28 @@ private fun ClassBuilder.createMapToObject(srcRep: KClass<*>, dstRep: KClass<*>,
 private fun ClassBuilder.createMapToStronglyTyped(srcRep: KClass<*>, dstRep: KClass<*>, mapperCD: ClassDesc): ClassBuilder {
     val methodName = "mapTo"
     val srcDescriptor = srcRep.descriptor()
+    val dstDescriptor = dstRep.descriptor()
     withMethod(methodName, MethodTypeDesc.of(dstRep.descriptor(), listOf(srcRep.descriptor())), ACC_PUBLIC) {
             mb ->
         mb.withCode {
             it
                 .aload(1)
-                //.invokevirtual(srcDescriptor, "getName", MethodTypeDesc.of(CD_String, listOf(CD_Void)))
-//            4: astore_2
-//            5: aload_1
-//            6: invokevirtual #13                 // Method isel/lae/li41n/mapper/CourseExt.getSemester:()I
-//            9: istore_3
-//            10: aload_1
-//            11: invokevirtual #17                 // Method isel/lae/li41n/mapper/CourseExt.getProgramme:()Ljava/lang/String;
-//            14: astore        4
-//            16: new           #20                 // class isel/lae/li41n/mapper/CourseInternal
-//            19: dup
-//            20: aload_2
-//            21: iload_3
-//            22: aload         4
-//            24: iconst_m1
-//            25: invokespecial #22                 // Method isel/lae/li41n/mapper/CourseInternal."<init>":(Ljava/lang/String;ILjava/lang/String;I)V
-//            28: areturn
-            .return_()
+                .invokevirtual(srcDescriptor, "getName", MethodTypeDesc.of(CD_String))
+                .astore(2)
+                .aload(1)
+                .invokevirtual(srcDescriptor, "getSemester", MethodTypeDesc.of(CD_int))
+                .istore(3)
+                .aload(1)
+                .invokevirtual(srcDescriptor, "getProgramme", MethodTypeDesc.of(CD_String))
+                .astore(4)
+                .new_(dstDescriptor)
+                .dup()
+                .aload(2)
+                .iload(3)
+                .aload(4)
+                .iconst_m1()
+                .invokespecial(dstDescriptor, INIT_NAME , MethodTypeDesc.of(CD_void, CD_String, CD_int, CD_String, CD_int))
+                .areturn()
         }
     }
     return this
