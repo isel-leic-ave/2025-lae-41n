@@ -6,7 +6,7 @@ package isel.lae.li41n.mapper
 class CourseExt(val name: String, val semester: Int,val  programme: String) {}
 
 
-class CourseInternal(
+class CourseInternal @JvmOverloads constructor(
     val name: String,
     val semester: Int,
     val programme: String,

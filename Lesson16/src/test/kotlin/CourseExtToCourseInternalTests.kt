@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.MethodSource
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-class CourseExtToCourseInternalTests1 {
+class CourseExtToCourseInternalTests {
     companion object {
         @JvmStatic
         fun mappers() =
@@ -21,7 +21,7 @@ class CourseExtToCourseInternalTests1 {
 
     @ParameterizedTest
     @MethodSource("mappers")
-    fun `Should Map ExternalCourse To InternalCourse1`(mapper: Mapper<CourseExt, CourseInternal>) {
+    fun `Should Map ExternalCourse To InternalCourse`(mapper: Mapper<CourseExt, CourseInternal>) {
         var cInternal: Any? = mapper.mapTo(courseExternal)
 
         assertNotNull(cInternal)

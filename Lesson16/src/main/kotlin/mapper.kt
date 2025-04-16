@@ -21,10 +21,8 @@ open class SimpleMapperReflect(val srcRep: KClass<*>, val dstRep: KClass<*>) : M
         private val mappers: MutableMap<MapperTypes, SimpleMapperReflect> = mutableMapOf()
         fun getMapperFor(src: KClass<*>, dst: KClass<*>): SimpleMapperReflect {
             val mt = MapperTypes(src, dst)
-            return mappers.getOrElse(mt) {
-                val sm = SimpleMapperReflect(src, dst)
-                mappers[mt] = sm
-                sm
+            return mappers.getOrPut(mt) {
+                SimpleMapperReflect(src, dst)
             }
         }
     }

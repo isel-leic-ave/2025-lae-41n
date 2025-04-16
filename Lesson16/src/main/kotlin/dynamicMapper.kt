@@ -10,7 +10,12 @@ import java.lang.constant.ConstantDescs.*
 import java.lang.constant.MethodTypeDesc
 import java.net.URLClassLoader
 import kotlin.reflect.KClass
+import kotlin.reflect.KParameter
+import kotlin.reflect.KProperty1
 import kotlin.reflect.KType
+import kotlin.reflect.full.declaredMemberProperties
+import kotlin.reflect.full.findAnnotation
+import kotlin.reflect.full.primaryConstructor
 
 private const val PACKAGE_NAME: String = "isel.lae.li41n.mapper"
 private val packageFolder = PACKAGE_NAME.replace(".", "/")
@@ -40,7 +45,7 @@ fun <S : Any, D : Any> loadDynamicMapper(
 } as Mapper<S, D>
 
 private fun <S : Any, D: Any> buildMapperClassfile(srcDomainClass: KClass<S>, dstDomainClass: KClass<D>): KClass<*> {
-    val className = "GeneratedMapperDyn${srcDomainClass.simpleName}To${dstDomainClass.simpleName}"
+    val className = "MyGeneratedMapperDyn${srcDomainClass.simpleName}To${dstDomainClass.simpleName}"
     buildMapperClassFile(className, srcDomainClass, dstDomainClass)
     return rootLoader
         .loadClass("$PACKAGE_NAME.$className")
@@ -108,28 +113,38 @@ private fun ClassBuilder.createMapToStronglyTyped(srcRep: KClass<*>, dstRep: KCl
     val methodName = "mapTo"
     val srcDescriptor = srcRep.descriptor()
     val dstDescriptor = dstRep.descriptor()
+
+
     withMethod(methodName, MethodTypeDesc.of(dstRep.descriptor(), listOf(srcRep.descriptor())), ACC_PUBLIC) {
-            mb ->
-        mb.withCode {
+        mb -> mb.withCode {
+            val paramToProp: List<Pair<KParameter, KProperty1<Any, Any?>>> = dstRep.primaryConstructor!!.parameters
+                .filter { !it.isOptional }
+                .map { param ->
+                    val propName = param.findAnnotation<PropName>()?.n ?: param.name
+                    val prop = srcRep.declaredMemberProperties.find { it.name == propName } as KProperty1<Any, Any?>
+                    Pair(param, prop)
+            }
             it
-                .aload(1)
-                .invokevirtual(srcDescriptor, "getName", MethodTypeDesc.of(CD_String))
-                .astore(2)
-                .aload(1)
-                .invokevirtual(srcDescriptor, "getSemester", MethodTypeDesc.of(CD_int))
-                .istore(3)
-                .aload(1)
-                .invokevirtual(srcDescriptor, "getProgramme", MethodTypeDesc.of(CD_String))
-                .astore(4)
-                .new_(dstDescriptor)
-                .dup()
-                .aload(2)
-                .iload(3)
-                .aload(4)
-                .iconst_m1()
-                .invokespecial(dstDescriptor, INIT_NAME , MethodTypeDesc.of(CD_void, CD_String, CD_int, CD_String, CD_int))
-                .areturn()
+            .new_(dstDescriptor)
+            .dup()
+            .loadPropValues(paramToProp, srcDescriptor)
+            .invokespecial(
+                dstDescriptor,
+                INIT_NAME ,
+                MethodTypeDesc.of(
+                    CD_void,
+                    paramToProp.map { it.first.type.descriptor() }.toList())
+            )
+            .areturn()
         }
+    }
+    return this
+}
+
+private fun CodeBuilder.loadPropValues(paramToProp: List<Pair<KParameter, KProperty1<Any, Any?>>>, srcDescriptor: ClassDesc): CodeBuilder {
+    paramToProp.forEach {
+        aload(1)
+        invokevirtual(srcDescriptor, "get${it.second.name.capitalize()}", MethodTypeDesc.of(it.second.returnType.descriptor()))
     }
     return this
 }
@@ -161,4 +176,11 @@ fun KClass<*>.descriptor(): ClassDesc =
 fun KType.descriptor(): ClassDesc {
     val klass = this.classifier as KClass<*>
     return klass.descriptor()
+}
+
+
+fun String.capitalize(): String {
+    return this.replaceFirstChar {
+        if (it.isLowerCase()) it.titlecase() else it.toString()
+    }
 }
