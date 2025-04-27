@@ -1,6 +1,6 @@
 Classfile /Users/luisfalcao/Library/CloudStorage/OneDrive-InstitutoSuperiordeEngenhariadeLisboa/ISEL/Disciplinas/2024_2025/2024-2025VerLAE/Repositories/2025-lae-41n-LF/Lesson17/build/classes/kotlin/test/isel/lae/li41n/mapper/mappers/MapperDynCourseExtWithTeacherToCourseInternalWithTeacher.class
-  Last modified Apr 27, 2025; size 2743 bytes
-  SHA-256 checksum 1bcebbed635f02eb0366e228ac16c08931f4de51342e9de0050d96530dc82bed
+  Last modified Apr 27, 2025; size 2730 bytes
+  SHA-256 checksum ff237e49680d5418eecc1bc3111469b1c24d54448078c22250ed7bb275ff0635
   Compiled from "MapperDynCourseExtWithTeacherToCourseInternalWithTeacher.kt"
 public final class isel.lae.li41n.mapper.mappers.MapperDynCourseExtWithTeacherToCourseInternalWithTeacher extends java.lang.Object implements isel.lae.li41n.mapper.Mapper<isel.lae.li41n.mapper.domain.CourseExternalWithTeacher, isel.lae.li41n.mapper.domain.CourseInternalWithTeacher>
   minor version: 0
@@ -31,17 +31,17 @@ Constant pool:
   #19 = Utf8               (Ljava/lang/Class;Ljava/lang/Class;)Lisel/lae/li41n/mapper/Mapper;
   #20 = NameAndType        #18:#19        // loadDynamicMapper:(Ljava/lang/Class;Ljava/lang/Class;)Lisel/lae/li41n/mapper/Mapper;
   #21 = Methodref          #17.#20        // isel/lae/li41n/mapper/DynamicMapperKt.loadDynamicMapper:(Ljava/lang/Class;Ljava/lang/Class;)Lisel/lae/li41n/mapper/Mapper;
-  #22 = Utf8               mapperTeachers
+  #22 = Utf8               teacherMapper
   #23 = Utf8               Lisel/lae/li41n/mapper/Mapper;
-  #24 = NameAndType        #22:#23        // mapperTeachers:Lisel/lae/li41n/mapper/Mapper;
-  #25 = Fieldref           #2.#24         // isel/lae/li41n/mapper/mappers/MapperDynCourseExtWithTeacherToCourseInternalWithTeacher.mapperTeachers:Lisel/lae/li41n/mapper/Mapper;
+  #24 = NameAndType        #22:#23        // teacherMapper:Lisel/lae/li41n/mapper/Mapper;
+  #25 = Fieldref           #2.#24         // isel/lae/li41n/mapper/mappers/MapperDynCourseExtWithTeacherToCourseInternalWithTeacher.teacherMapper:Lisel/lae/li41n/mapper/Mapper;
   #26 = Utf8               this
   #27 = Utf8               Lisel/lae/li41n/mapper/mappers/MapperDynCourseExtWithTeacherToCourseInternalWithTeacher;
   #28 = Utf8               mapTo
   #29 = Utf8               (Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;)Lisel/lae/li41n/mapper/domain/CourseInternalWithTeacher;
   #30 = Utf8               Lorg/jetbrains/annotations/NotNull;
-  #31 = Utf8               courseExt
-  #32 = String             #31            // courseExt
+  #31 = Utf8               src
+  #32 = String             #31            // src
   #33 = Utf8               kotlin/jvm/internal/Intrinsics
   #34 = Class              #33            // kotlin/jvm/internal/Intrinsics
   #35 = Utf8               checkNotNullParameter
@@ -76,38 +76,37 @@ Constant pool:
   #64 = Utf8               Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;
   #65 = NameAndType        #28:#29        // mapTo:(Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;)Lisel/lae/li41n/mapper/domain/CourseInternalWithTeacher;
   #66 = Methodref          #2.#65         // isel/lae/li41n/mapper/mappers/MapperDynCourseExtWithTeacherToCourseInternalWithTeacher.mapTo:(Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;)Lisel/lae/li41n/mapper/domain/CourseInternalWithTeacher;
-  #67 = Utf8               src
-  #68 = Utf8               Ljava/lang/Object;
-  #69 = Utf8               Lisel/lae/li41n/mapper/Mapper<Lisel/lae/li41n/mapper/domain/TeacherExternal;Lisel/lae/li41n/mapper/domain/TeacherInternal;>;
-  #70 = Utf8               Lkotlin/Metadata;
-  #71 = Utf8               mv
-  #72 = Integer            2
-  #73 = Integer            1
-  #74 = Integer            0
-  #75 = Utf8               k
-  #76 = Utf8               xi
-  #77 = Integer            48
-  #78 = Utf8               d1
-  #79 = Utf8               \u0000 \n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\u0018\u00002\u000e\u0012\u0004\u0012\u00020\u0002\u0012\u0004\u0012\u00020\u00030\u0001B\u0007¢\u0006\u0004\b\u0004\u0010\u0005J\u0010\u0010\t\u001a\u00020\u00032\u0006\u0010\n\u001a\u00020\u0002H\u0016R\u001a\u0010\u0006\u001a\u000e\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\b0\u0001X\u0082\u0004¢\u0006\u0002\n\u0000¨\u0006\u000b
-  #80 = Utf8               d2
-  #81 = Utf8               Lisel/lae/li41n/mapper/domain/CourseInternalWithTeacher;
-  #82 = Utf8               Lisel/lae/li41n/mapper/domain/TeacherExternal;
-  #83 = Utf8               Lisel/lae/li41n/mapper/domain/TeacherInternal;
-  #84 = Utf8               Lesson17_test
-  #85 = Utf8               MapperDynCourseExtWithTeacherToCourseInternalWithTeacher.kt
-  #86 = Utf8               Signature
-  #87 = Utf8               RuntimeInvisibleAnnotations
-  #88 = Utf8               Code
-  #89 = Utf8               LineNumberTable
-  #90 = Utf8               LocalVariableTable
-  #91 = Utf8               RuntimeInvisibleParameterAnnotations
-  #92 = Utf8               SourceFile
-  #93 = Utf8               RuntimeVisibleAnnotations
+  #67 = Utf8               Ljava/lang/Object;
+  #68 = Utf8               Lisel/lae/li41n/mapper/Mapper<Lisel/lae/li41n/mapper/domain/TeacherExternal;Lisel/lae/li41n/mapper/domain/TeacherInternal;>;
+  #69 = Utf8               Lkotlin/Metadata;
+  #70 = Utf8               mv
+  #71 = Integer            2
+  #72 = Integer            1
+  #73 = Integer            0
+  #74 = Utf8               k
+  #75 = Utf8               xi
+  #76 = Integer            48
+  #77 = Utf8               d1
+  #78 = Utf8               \u0000 \n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\u0018\u00002\u000e\u0012\u0004\u0012\u00020\u0002\u0012\u0004\u0012\u00020\u00030\u0001B\u0007¢\u0006\u0004\b\u0004\u0010\u0005J\u0010\u0010\t\u001a\u00020\u00032\u0006\u0010\n\u001a\u00020\u0002H\u0016R\u001a\u0010\u0006\u001a\u000e\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\b0\u0001X\u0082\u0004¢\u0006\u0002\n\u0000¨\u0006\u000b
+  #79 = Utf8               d2
+  #80 = Utf8               Lisel/lae/li41n/mapper/domain/CourseInternalWithTeacher;
+  #81 = Utf8               Lisel/lae/li41n/mapper/domain/TeacherExternal;
+  #82 = Utf8               Lisel/lae/li41n/mapper/domain/TeacherInternal;
+  #83 = Utf8               Lesson17_test
+  #84 = Utf8               MapperDynCourseExtWithTeacherToCourseInternalWithTeacher.kt
+  #85 = Utf8               Signature
+  #86 = Utf8               RuntimeInvisibleAnnotations
+  #87 = Utf8               Code
+  #88 = Utf8               LineNumberTable
+  #89 = Utf8               LocalVariableTable
+  #90 = Utf8               RuntimeInvisibleParameterAnnotations
+  #91 = Utf8               SourceFile
+  #92 = Utf8               RuntimeVisibleAnnotations
 {
-  private final isel.lae.li41n.mapper.Mapper<isel.lae.li41n.mapper.domain.TeacherExternal, isel.lae.li41n.mapper.domain.TeacherInternal> mapperTeachers;
+  private final isel.lae.li41n.mapper.Mapper<isel.lae.li41n.mapper.domain.TeacherExternal, isel.lae.li41n.mapper.domain.TeacherInternal> teacherMapper;
     descriptor: Lisel/lae/li41n/mapper/Mapper;
     flags: (0x0012) ACC_PRIVATE, ACC_FINAL
-    Signature: #69                          // Lisel/lae/li41n/mapper/Mapper<Lisel/lae/li41n/mapper/domain/TeacherExternal;Lisel/lae/li41n/mapper/domain/TeacherInternal;>;
+    Signature: #68                          // Lisel/lae/li41n/mapper/Mapper<Lisel/lae/li41n/mapper/domain/TeacherExternal;Lisel/lae/li41n/mapper/domain/TeacherInternal;>;
     RuntimeInvisibleAnnotations:
       0: #30()
         org.jetbrains.annotations.NotNull
@@ -123,7 +122,7 @@ Constant pool:
          5: ldc           #13                 // class isel/lae/li41n/mapper/domain/TeacherExternal
          7: ldc           #15                 // class isel/lae/li41n/mapper/domain/TeacherInternal
          9: invokestatic  #21                 // Method isel/lae/li41n/mapper/DynamicMapperKt.loadDynamicMapper:(Ljava/lang/Class;Ljava/lang/Class;)Lisel/lae/li41n/mapper/Mapper;
-        12: putfield      #25                 // Field mapperTeachers:Lisel/lae/li41n/mapper/Mapper;
+        12: putfield      #25                 // Field teacherMapper:Lisel/lae/li41n/mapper/Mapper;
         15: return
       LineNumberTable:
         line 6: 0
@@ -139,7 +138,7 @@ Constant pool:
     Code:
       stack=7, locals=2, args_size=2
          0: aload_1
-         1: ldc           #32                 // String courseExt
+         1: ldc           #32                 // String src
          3: invokestatic  #38                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
          6: new           #40                 // class isel/lae/li41n/mapper/domain/CourseInternalWithTeacher
          9: dup
@@ -150,7 +149,7 @@ Constant pool:
         18: aload_1
         19: invokevirtual #53                 // Method isel/lae/li41n/mapper/domain/CourseExternalWithTeacher.getProgramme:()Ljava/lang/String;
         22: aload_0
-        23: getfield      #25                 // Field mapperTeachers:Lisel/lae/li41n/mapper/Mapper;
+        23: getfield      #25                 // Field teacherMapper:Lisel/lae/li41n/mapper/Mapper;
         26: aload_1
         27: invokevirtual #57                 // Method isel/lae/li41n/mapper/domain/CourseExternalWithTeacher.getTeacher:()Lisel/lae/li41n/mapper/domain/TeacherExternal;
         30: invokeinterface #60,  2           // InterfaceMethod isel/lae/li41n/mapper/Mapper.mapTo:(Ljava/lang/Object;)Ljava/lang/Object;
@@ -167,7 +166,7 @@ Constant pool:
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
             0      42     0  this   Lisel/lae/li41n/mapper/mappers/MapperDynCourseExtWithTeacherToCourseInternalWithTeacher;
-            0      42     1 courseExt   Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;
+            0      42     1   src   Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;
     RuntimeInvisibleAnnotations:
       0: #30()
         org.jetbrains.annotations.NotNull
@@ -196,11 +195,11 @@ Constant pool:
 Signature: #3                           // Ljava/lang/Object;Lisel/lae/li41n/mapper/Mapper<Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;Lisel/lae/li41n/mapper/domain/CourseInternalWithTeacher;>;
 SourceFile: "MapperDynCourseExtWithTeacherToCourseInternalWithTeacher.kt"
 RuntimeVisibleAnnotations:
-  0: #70(#71=[I#72,I#73,I#74],#75=I#73,#76=I#77,#78=[s#79],#80=[s#27,s#23,s#64,s#81,s#8,s#9,s#22,s#82,s#83,s#28,s#31,s#84])
+  0: #69(#70=[I#71,I#72,I#73],#74=I#72,#75=I#76,#77=[s#78],#79=[s#27,s#23,s#64,s#80,s#8,s#9,s#22,s#81,s#82,s#28,s#31,s#83])
     kotlin.Metadata(
       mv=[2,1,0]
       k=1
       xi=48
       d1=["\u0000 \n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\u0018\u00002\u000e\u0012\u0004\u0012\u00020\u0002\u0012\u0004\u0012\u00020\u00030\u0001B\u0007¢\u0006\u0004\b\u0004\u0010\u0005J\u0010\u0010\t\u001a\u00020\u00032\u0006\u0010\n\u001a\u00020\u0002H\u0016R\u001a\u0010\u0006\u001a\u000e\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\b0\u0001X\u0082\u0004¢\u0006\u0002\n\u0000¨\u0006\u000b"]
-      d2=["Lisel/lae/li41n/mapper/mappers/MapperDynCourseExtWithTeacherToCourseInternalWithTeacher;","Lisel/lae/li41n/mapper/Mapper;","Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;","Lisel/lae/li41n/mapper/domain/CourseInternalWithTeacher;","<init>","()V","mapperTeachers","Lisel/lae/li41n/mapper/domain/TeacherExternal;","Lisel/lae/li41n/mapper/domain/TeacherInternal;","mapTo","courseExt","Lesson17_test"]
+      d2=["Lisel/lae/li41n/mapper/mappers/MapperDynCourseExtWithTeacherToCourseInternalWithTeacher;","Lisel/lae/li41n/mapper/Mapper;","Lisel/lae/li41n/mapper/domain/CourseExternalWithTeacher;","Lisel/lae/li41n/mapper/domain/CourseInternalWithTeacher;","<init>","()V","teacherMapper","Lisel/lae/li41n/mapper/domain/TeacherExternal;","Lisel/lae/li41n/mapper/domain/TeacherInternal;","mapTo","src","Lesson17_test"]
     )

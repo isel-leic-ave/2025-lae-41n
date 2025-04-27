@@ -3,7 +3,7 @@ package isel.lae.li41n.mapper
 import java.io.File
 import java.lang.classfile.ClassBuilder
 import java.lang.classfile.ClassFile
-import java.lang.classfile.ClassFile.ACC_PUBLIC
+import java.lang.classfile.ClassFile.*
 import java.lang.classfile.CodeBuilder
 import java.lang.constant.ClassDesc
 import java.lang.constant.ConstantDescs.*
@@ -53,6 +53,21 @@ private fun <S : Any, D: Any> buildMapperClassfile(srcDomainClass: KClass<S>, ds
         .kotlin
 }
 
+private data class MappingDynamic(val srcRep: KClass<*>, val dstRep: KClass<*>, val mapperCD: ClassDesc) {
+    val paramToProp: List<Pair<KParameter, KProperty1<Any, Any?>>>
+    val srcDescriptor = srcRep.descriptor()
+    val dstDescriptor = dstRep.descriptor()
+    init {
+        paramToProp =
+            dstRep.primaryConstructor!!.parameters
+                .filter { !it.isOptional }
+                .map { param ->
+                    val propName = param.findAnnotation<PropName>()?.n ?: param.name
+                    val prop = srcRep.declaredMemberProperties.find { it.name == propName } as KProperty1<Any, Any?>
+                    Pair(param, prop)
+                }
+    }
+}
 /**
  * Generates a byte array representing a dynamically created
  * class that extends RepositoryReflect, and then saves it to the
@@ -63,15 +78,16 @@ fun <S: Any, D : Any> buildMapperClassFile(
     srcRep: KClass<S>,
     dstRep: KClass<D>,
 ) {
-    val mapperCD = ClassDesc.of("${PACKAGE_NAME}.${className}")
+    val mapperCD: ClassDesc = ClassDesc.of("${PACKAGE_NAME}.${className}")
+    val mappingDyn = MappingDynamic(srcRep, dstRep, mapperCD)
     val bytes =
         ClassFile.of().build(mapperCD) { clb ->
             clb
                 .withFlags(ACC_PUBLIC)
                 .withInterfaceSymbols(ClassDesc.of(PACKAGE_NAME, "Mapper"))
-                .createConstructor()
-                .createMapToObject(srcRep, dstRep, mapperCD)
-                .createMapToStronglyTyped(srcRep, dstRep, mapperCD)
+                .createConstructor(mappingDyn)
+                .createMapToObject(mappingDyn)
+                .createMapToStronglyTyped(mappingDyn)
         }
         File("${root}${packageFolder}", "${className}.class").also {
             it.parentFile.mkdirs() // Create directories if they do not exist
@@ -81,27 +97,60 @@ fun <S: Any, D : Any> buildMapperClassFile(
 
 
 
-private fun ClassBuilder.createConstructor() : ClassBuilder {
+private fun ClassBuilder.createConstructor(mappingDyn: MappingDynamic): ClassBuilder {
+    val complexParams = mappingDyn.paramToProp.filter { (param, prop) -> param.type.isComplex() }
+    var fieldNamesParamAndProps = complexParams.map { (param, prop) ->
+
+        withField(param.MapperName(), Mapper::class.descriptor()) {
+            it.withFlags(ACC_PRIVATE or ACC_FINAL)
+        }
+        Pair(param, prop)
+    }
+
     withMethod(INIT_NAME, MTD_void, ACC_PUBLIC) { mb ->
         mb.withCode { cob: CodeBuilder ->
             cob
                 .aload(0)
                 .invokespecial(CD_Object, INIT_NAME, MTD_void)
+                .setMappers(fieldNamesParamAndProps, mappingDyn)
                 .return_()
         }
     }
     return this
 }
 
-private fun ClassBuilder.createMapToObject(srcRep: KClass<*>, dstRep: KClass<*>, mapperCD: ClassDesc): ClassBuilder {
+private fun KParameter.MapperName(): String? =
+    "${this.name}Mapper"
+
+
+private fun CodeBuilder.setMappers(
+    fieldNamesParamAndProps: List<Pair<KParameter, KProperty1<Any, Any?>>>,
+    mappingDyn: MappingDynamic
+): CodeBuilder {
+    fieldNamesParamAndProps.forEach { (param, prop) ->
+        aload(0)
+        ldc(prop.returnType.descriptor())
+        ldc(param.type.descriptor())
+        invokestatic(
+            ClassDesc.of("${PACKAGE_NAME}.DynamicMapperKt"),
+            "loadDynamicMapper",
+            MethodTypeDesc.of(Mapper::class.descriptor(), Class::class.descriptor(), Class::class.descriptor())
+        )
+        .putfield(mappingDyn.mapperCD, param.MapperName(), Mapper::class.descriptor())
+    }
+
+    return this
+}
+
+private fun ClassBuilder.createMapToObject(mappingDyn: MappingDynamic): ClassBuilder {
     val methodName = "mapTo"
     withMethod(methodName, MethodTypeDesc.of(CD_Object, listOf(CD_Object)), ACC_PUBLIC) {
             mb ->
         mb.withCode {
                it.aload(0)
                    .aload(1)
-                   .checkcast(srcRep.descriptor())
-                   .invokevirtual(mapperCD, methodName, MethodTypeDesc.of(dstRep.descriptor(), listOf(srcRep.descriptor())))
+                   .checkcast(mappingDyn.srcRep.descriptor())
+                   .invokevirtual(mappingDyn.mapperCD, methodName, MethodTypeDesc.of(mappingDyn.dstRep.descriptor(), listOf(mappingDyn.srcRep.descriptor())))
                    .areturn()
         }
     }
@@ -109,31 +158,23 @@ private fun ClassBuilder.createMapToObject(srcRep: KClass<*>, dstRep: KClass<*>,
 }
 
 
-private fun ClassBuilder.createMapToStronglyTyped(srcRep: KClass<*>, dstRep: KClass<*>, mapperCD: ClassDesc): ClassBuilder {
+private fun ClassBuilder.createMapToStronglyTyped(mappingDyn: MappingDynamic): ClassBuilder {
     val methodName = "mapTo"
-    val srcDescriptor = srcRep.descriptor()
-    val dstDescriptor = dstRep.descriptor()
 
 
-    withMethod(methodName, MethodTypeDesc.of(dstRep.descriptor(), listOf(srcRep.descriptor())), ACC_PUBLIC) {
+    withMethod(methodName, MethodTypeDesc.of(mappingDyn.dstRep.descriptor(), listOf(mappingDyn.srcRep.descriptor())), ACC_PUBLIC) {
         mb -> mb.withCode {
-            val paramToProp: List<Pair<KParameter, KProperty1<Any, Any?>>> = dstRep.primaryConstructor!!.parameters
-                .filter { !it.isOptional }
-                .map { param ->
-                    val propName = param.findAnnotation<PropName>()?.n ?: param.name
-                    val prop = srcRep.declaredMemberProperties.find { it.name == propName } as KProperty1<Any, Any?>
-                    Pair(param, prop)
-            }
+
             it
-            .new_(dstDescriptor)
+            .new_(mappingDyn.dstDescriptor)
             .dup()
-            .loadPropValues(paramToProp, srcDescriptor)
+            .loadPropValues(mappingDyn)
             .invokespecial(
-                dstDescriptor,
+                mappingDyn.dstDescriptor,
                 INIT_NAME ,
                 MethodTypeDesc.of(
                     CD_void,
-                    paramToProp.map { it.first.type.descriptor() }.toList())
+                    mappingDyn.paramToProp.map { it.first.type.descriptor() }.toList())
             )
             .areturn()
         }
@@ -141,35 +182,38 @@ private fun ClassBuilder.createMapToStronglyTyped(srcRep: KClass<*>, dstRep: KCl
     return this
 }
 
-private fun CodeBuilder.loadPropValues(paramToProp: List<Pair<KParameter, KProperty1<Any, Any?>>>, srcDescriptor: ClassDesc): CodeBuilder {
-    paramToProp.forEach {
+private fun CodeBuilder.loadPropValues(mappingDyn: MappingDynamic): CodeBuilder {
+    mappingDyn.paramToProp.forEach {
         if(it.second.returnType.isComplex()) {
-            loadComplexValue(it, srcDescriptor);
+            loadComplexValue(it, mappingDyn);
         } else {
-            loadPropValue(it.second, srcDescriptor)
+            loadPropValue(it.second, mappingDyn)
         }
     }
     return this
 }
 
-fun CodeBuilder.loadPropValue(prop: KProperty1<Any, Any?>, srcDescriptor: ClassDesc) {
+private fun CodeBuilder.loadPropValue(prop: KProperty1<Any, Any?>, mappingDyn: MappingDynamic) {
     aload(1)
     invokevirtual(
-        srcDescriptor,
+        mappingDyn.srcDescriptor,
         "${prop.javaGetter?.name}",
         MethodTypeDesc.of(prop.returnType.descriptor())
     )
 }
 
-private fun CodeBuilder.loadComplexValue(paramAndProp: Pair<KParameter, KProperty1<Any, Any?>>, srcDescriptor: ClassDesc): CodeBuilder {
-    ldc(paramAndProp.second.returnType.descriptor())
-    ldc(paramAndProp.first.type.descriptor())
-    invokestatic(
-        ClassDesc.of("${PACKAGE_NAME}.DynamicMapperKt"),
-        "loadDynamicMapper",
-        MethodTypeDesc.of(Mapper::class.descriptor(), Class::class.descriptor(), Class::class.descriptor())
-    )
-    loadPropValue(paramAndProp.second, srcDescriptor)
+private fun CodeBuilder.loadComplexValue(paramAndProp: Pair<KParameter, KProperty1<Any, Any?>>, mappingDyn: MappingDynamic): CodeBuilder {
+    aload(0)
+   .getfield(mappingDyn.mapperCD, paramAndProp.first.MapperName(), Mapper::class.descriptor())
+
+//    ldc(paramAndProp.second.returnType.descriptor())
+//    ldc(paramAndProp.first.type.descriptor())
+//    invokestatic(
+//        ClassDesc.of("${PACKAGE_NAME}.DynamicMapperKt"),
+//        "loadDynamicMapper",
+//        MethodTypeDesc.of(Mapper::class.descriptor(), Class::class.descriptor(), Class::class.descriptor())
+//    )
+    loadPropValue(paramAndProp.second, mappingDyn)
     invokeinterface(
         Mapper::class.descriptor(),
         "mapTo",
