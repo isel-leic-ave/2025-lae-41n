@@ -1,0 +1,35 @@
+Compiled from "MapperDynCourseExtToCourseInternal.kt"
+public final class isel.lae.li41n.mapper.MapperDynCourseExtToCourseInternal implements isel.lae.li41n.mapper.Mapper<isel.lae.li41n.mapper.CourseExt, isel.lae.li41n.mapper.CourseInternal> {
+  public isel.lae.li41n.mapper.MapperDynCourseExtToCourseInternal();
+    Code:
+       0: aload_0
+       1: invokespecial #11                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public isel.lae.li41n.mapper.CourseInternal mapTo(isel.lae.li41n.mapper.CourseExt);
+    Code:
+       0: aload_1
+       1: ldc           #18                 // String courseExt
+       3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: new           #26                 // class isel/lae/li41n/mapper/CourseInternal
+       9: dup
+      10: aload_1
+      11: invokevirtual #32                 // Method isel/lae/li41n/mapper/CourseExt.getName:()Ljava/lang/String;
+      14: aload_1
+      15: invokevirtual #36                 // Method isel/lae/li41n/mapper/CourseExt.getSemester:()I
+      18: aload_1
+      19: invokevirtual #39                 // Method isel/lae/li41n/mapper/CourseExt.getProgramme:()Ljava/lang/String;
+      22: iconst_0
+      23: bipush        8
+      25: aconst_null
+      26: invokespecial #42                 // Method isel/lae/li41n/mapper/CourseInternal."<init>":(Ljava/lang/String;ILjava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+      29: areturn
+
+  public java.lang.Object mapTo(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #28                 // class isel/lae/li41n/mapper/CourseExt
+       5: invokevirtual #46                 // Method mapTo:(Lisel/lae/li41n/mapper/CourseExt;)Lisel/lae/li41n/mapper/CourseInternal;
+       8: areturn
+}
