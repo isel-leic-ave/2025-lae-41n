@@ -2,7 +2,7 @@ Classfile /Users/luisfalcao/Library/CloudStorage/OneDrive-InstitutoSuperiordeEng
   Last modified Apr 14, 2025; size 1262 bytes
   SHA-256 checksum b34e67a367949e7336d521da3a5e95663a540ae878ea77c69fcbb878b0982e02
   Compiled from "MapperDynCourseExtToCourseInternalJava.java"
-public class isel.lae.li41n.mapper.MapperDynCourseExtToCourseInternalJava extends java.lang.Object implements isel.lae.li41n.mapper.Mapper<isel.lae.li41n.mapper.CourseExt, isel.lae.li41n.mapper.CourseInternal>
+public class isel.lae.li41n.mapper.mappers.MapperDynCourseExtToCourseInternalJava extends java.lang.Object implements isel.lae.li41n.mapper.Mapper<isel.lae.li41n.mapper.CourseExt, isel.lae.li41n.mapper.CourseInternal>
   minor version: 0
   major version: 66
   flags: (0x0021) ACC_PUBLIC, ACC_SUPER
@@ -61,7 +61,7 @@ Constant pool:
   #49 = Utf8               SourceFile
   #50 = Utf8               MapperDynCourseExtToCourseInternalJava.java
 {
-  public isel.lae.li41n.mapper.MapperDynCourseExtToCourseInternalJava();
+  public isel.lae.li41n.mapper.mappers.MapperDynCourseExtToCourseInternalJava();
     descriptor: ()V
     flags: (0x0001) ACC_PUBLIC
     Code:

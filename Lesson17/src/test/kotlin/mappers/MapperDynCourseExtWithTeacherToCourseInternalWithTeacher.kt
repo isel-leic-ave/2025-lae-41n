@@ -1,6 +1,9 @@
-package isel.lae.li41n.mapper
+package isel.lae.li41n.mapper.mappers
 
-class MapperDynCourseExtWithTeacherToCourseInternalWithTeacher() : Any(), Mapper<CourseExternalWithTeacher, CourseInternalWithTeacher> {
+import isel.lae.li41n.mapper.*
+import isel.lae.li41n.mapper.domain.*
+
+class MapperDynCourseExtWithTeacherToCourseInternalWithTeacher() : Mapper<CourseExternalWithTeacher, CourseInternalWithTeacher> {
     override fun mapTo(courseExt: CourseExternalWithTeacher): CourseInternalWithTeacher {
         var name = courseExt.name;
         var semester = courseExt.semester;
@@ -8,8 +11,7 @@ class MapperDynCourseExtWithTeacherToCourseInternalWithTeacher() : Any(), Mapper
 
         var mapperTeachers = loadDynamicMapper(TeacherExternal::class.java, TeacherInternal::class.java)
         var teacherInternal = mapperTeachers.mapTo(courseExt.teacher)
-
-
+        
         return CourseInternalWithTeacher(name, semester, programme, teacherInternal)
     }
 }

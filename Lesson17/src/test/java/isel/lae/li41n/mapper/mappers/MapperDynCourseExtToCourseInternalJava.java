@@ -1,4 +1,8 @@
-package isel.lae.li41n.mapper;
+package isel.lae.li41n.mapper.mappers;
+
+import isel.lae.li41n.mapper.Mapper;
+import isel.lae.li41n.mapper.domain.CourseExt;
+import isel.lae.li41n.mapper.domain.CourseInternal;
 
 public class MapperDynCourseExtToCourseInternalJava extends Object implements Mapper<CourseExt, CourseInternal> {
     public MapperDynCourseExtToCourseInternalJava() {

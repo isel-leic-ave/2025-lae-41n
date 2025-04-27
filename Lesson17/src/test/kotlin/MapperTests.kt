@@ -1,5 +1,6 @@
 package isel.lae.li41n.mapper
 
+import isel.lae.li41n.mapper.domain.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull

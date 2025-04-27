@@ -1,5 +1,8 @@
 package isel.lae.li41n.mapper
 
+import isel.lae.li41n.mapper.domain.CourseExt
+import isel.lae.li41n.mapper.domain.CourseInternal
+import isel.lae.li41n.mapper.mappers.MapperDynCourseExtToCourseInternalJava
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import kotlin.test.assertEquals
@@ -11,7 +14,7 @@ class CourseExtToCourseInternalTests {
         fun mappers() =
             listOf<Mapper<CourseExt, CourseInternal>>(
 //                SimpleMapperReflect(CourseExt::class, CourseInternal::class) as Mapper<CourseExt, CourseInternal>,
-//                MapperDynCourseExtToCourseInternalJava(),
+                MapperDynCourseExtToCourseInternalJava(),
                 loadDynamicMapper(CourseExt::class, CourseInternal::class)
             )
 

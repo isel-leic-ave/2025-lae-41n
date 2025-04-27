@@ -16,6 +16,7 @@ import kotlin.reflect.KType
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.primaryConstructor
+import kotlin.reflect.jvm.javaGetter
 
 private const val PACKAGE_NAME: String = "isel.lae.li41n.mapper"
 private val packageFolder = PACKAGE_NAME.replace(".", "/")
@@ -62,8 +63,6 @@ fun <S: Any, D : Any> buildMapperClassFile(
     srcRep: KClass<S>,
     dstRep: KClass<D>,
 ) {
-
-
     val mapperCD = ClassDesc.of("${PACKAGE_NAME}.${className}")
     val bytes =
         ClassFile.of().build(mapperCD) { clb ->
@@ -109,6 +108,7 @@ private fun ClassBuilder.createMapToObject(srcRep: KClass<*>, dstRep: KClass<*>,
     return this
 }
 
+
 private fun ClassBuilder.createMapToStronglyTyped(srcRep: KClass<*>, dstRep: KClass<*>, mapperCD: ClassDesc): ClassBuilder {
     val methodName = "mapTo"
     val srcDescriptor = srcRep.descriptor()
@@ -143,12 +143,42 @@ private fun ClassBuilder.createMapToStronglyTyped(srcRep: KClass<*>, dstRep: KCl
 
 private fun CodeBuilder.loadPropValues(paramToProp: List<Pair<KParameter, KProperty1<Any, Any?>>>, srcDescriptor: ClassDesc): CodeBuilder {
     paramToProp.forEach {
-        aload(1)
-        invokevirtual(srcDescriptor, "get${it.second.name.capitalize()}", MethodTypeDesc.of(it.second.returnType.descriptor()))
+        if(it.second.returnType.isComplex()) {
+            loadComplexValue(it, srcDescriptor);
+        } else {
+            loadPropValue(it.second, srcDescriptor)
+        }
     }
     return this
 }
 
+fun CodeBuilder.loadPropValue(prop: KProperty1<Any, Any?>, srcDescriptor: ClassDesc) {
+    aload(1)
+    invokevirtual(
+        srcDescriptor,
+        "${prop.javaGetter?.name}",
+        MethodTypeDesc.of(prop.returnType.descriptor())
+    )
+}
+
+private fun CodeBuilder.loadComplexValue(paramAndProp: Pair<KParameter, KProperty1<Any, Any?>>, srcDescriptor: ClassDesc): CodeBuilder {
+    ldc(paramAndProp.second.returnType.descriptor())
+    ldc(paramAndProp.first.type.descriptor())
+    invokestatic(
+        ClassDesc.of("${PACKAGE_NAME}.DynamicMapperKt"),
+        "loadDynamicMapper",
+        MethodTypeDesc.of(Mapper::class.descriptor(), Class::class.descriptor(), Class::class.descriptor())
+    )
+    loadPropValue(paramAndProp.second, srcDescriptor)
+    invokeinterface(
+        Mapper::class.descriptor(),
+        "mapTo",
+        MethodTypeDesc.of(CD_Object, CD_Object)
+    )
+    checkcast(paramAndProp.first.type.descriptor())
+
+    return this
+}
 /**
  * Returns a ClassDesc of the type descriptor of the given KClass.
  */
@@ -178,9 +208,9 @@ fun KType.descriptor(): ClassDesc {
     return klass.descriptor()
 }
 
-
-fun String.capitalize(): String {
-    return this.replaceFirstChar {
-        if (it.isLowerCase()) it.titlecase() else it.toString()
-    }
+fun KType.isComplex(): Boolean {
+    val klass = this.classifier as KClass<*>
+    return !(klass.java.isPrimitive || klass.java.isEnum || klass.java == String::class.java)
 }
+
+
