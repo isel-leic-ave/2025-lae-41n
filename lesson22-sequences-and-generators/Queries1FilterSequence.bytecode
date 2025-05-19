@@ -1,0 +1,425 @@
+Classfile /Users/luisfalcao/Library/CloudStorage/OneDrive-InstitutoSuperiordeEngenhariadeLisboa/ISEL/Disciplinas/2024_2025/2024-2025VerLAE/Repositories/2025-lae-41n-LF/lesson22-sequences/build/classes/kotlin/main/pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.class
+  Last modified May 16, 2025; size 4143 bytes
+  SHA-256 checksum 3137697cce00d82d60a269c05951c8e54abf5e0d0d973e28ecd958b5e6112011
+  Compiled from "Queries1.kt"
+final class pt.isel.lae.li41n.Queries1Kt$lazyFilterWithSequence1$1 extends kotlin.coroutines.jvm.internal.RestrictedSuspendLambda implements kotlin.jvm.functions.Function2<kotlin.sequences.SequenceScope<? super T>, kotlin.coroutines.Continuation<? super kotlin.Unit>, java.lang.Object>
+  minor version: 0
+  major version: 65
+  flags: (0x0030) ACC_FINAL, ACC_SUPER
+  this_class: #2                          // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1
+  super_class: #5                         // kotlin/coroutines/jvm/internal/RestrictedSuspendLambda
+  interfaces: 1, fields: 5, methods: 5, attributes: 5
+Constant pool:
+    #1 = Utf8               pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1
+    #2 = Class              #1            // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1
+    #3 = Utf8               Lkotlin/coroutines/jvm/internal/RestrictedSuspendLambda;Lkotlin/jvm/functions/Function2<Lkotlin/sequences/SequenceScope<-TT;>;Lkotlin/coroutines/Continuation<-Lkotlin/Unit;>;Ljava/lang/Object;>;
+    #4 = Utf8               kotlin/coroutines/jvm/internal/RestrictedSuspendLambda
+    #5 = Class              #4            // kotlin/coroutines/jvm/internal/RestrictedSuspendLambda
+    #6 = Utf8               kotlin/jvm/functions/Function2
+    #7 = Class              #6            // kotlin/jvm/functions/Function2
+    #8 = Utf8               <init>
+    #9 = Utf8               (Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V
+   #10 = Utf8               (Lkotlin/sequences/Sequence<+TT;>;Lkotlin/jvm/functions/Function1<-TT;Ljava/lang/Boolean;>;Lkotlin/coroutines/Continuation<-Lpt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1;>;)V
+   #11 = Utf8               $this_lazyFilterWithSequence1
+   #12 = Utf8               Lkotlin/sequences/Sequence;
+   #13 = NameAndType        #11:#12       // $this_lazyFilterWithSequence1:Lkotlin/sequences/Sequence;
+   #14 = Fieldref           #2.#13        // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.$this_lazyFilterWithSequence1:Lkotlin/sequences/Sequence;
+   #15 = Utf8               $predicate
+   #16 = Utf8               Lkotlin/jvm/functions/Function1;
+   #17 = NameAndType        #15:#16       // $predicate:Lkotlin/jvm/functions/Function1;
+   #18 = Fieldref           #2.#17        // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.$predicate:Lkotlin/jvm/functions/Function1;
+   #19 = Utf8               (ILkotlin/coroutines/Continuation;)V
+   #20 = NameAndType        #8:#19        // "<init>":(ILkotlin/coroutines/Continuation;)V
+   #21 = Methodref          #5.#20        // kotlin/coroutines/jvm/internal/RestrictedSuspendLambda."<init>":(ILkotlin/coroutines/Continuation;)V
+   #22 = Utf8               this
+   #23 = Utf8               Lpt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1;
+   #24 = Utf8               $receiver
+   #25 = Utf8               $completion
+   #26 = Utf8               Lkotlin/coroutines/Continuation;
+   #27 = Utf8               invokeSuspend
+   #28 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #29 = Utf8               L$1
+   #30 = Utf8               Ljava/lang/Object;
+   #31 = Utf8               Lkotlin/coroutines/jvm/internal/DebugMetadata;
+   #32 = Utf8               f
+   #33 = Utf8               Queries1.kt
+   #34 = Utf8               l
+   #35 = Integer            7
+   #36 = Utf8               i
+   #37 = Integer            0
+   #38 = Utf8               s
+   #39 = Utf8               L$0
+   #40 = Utf8               n
+   #41 = Utf8               $this$sequence
+   #42 = Utf8               m
+   #43 = Utf8               c
+   #44 = Utf8               pt.isel.lae.li41n.Queries1Kt$lazyFilterWithSequence1$1
+   #45 = Utf8               kotlin/coroutines/intrinsics/IntrinsicsKt
+   #46 = Class              #45           // kotlin/coroutines/intrinsics/IntrinsicsKt
+   #47 = Utf8               getCOROUTINE_SUSPENDED
+   #48 = Utf8               ()Ljava/lang/Object;
+   #49 = NameAndType        #47:#48       // getCOROUTINE_SUSPENDED:()Ljava/lang/Object;
+   #50 = Methodref          #46.#49       // kotlin/coroutines/intrinsics/IntrinsicsKt.getCOROUTINE_SUSPENDED:()Ljava/lang/Object;
+   #51 = Utf8               label
+   #52 = Utf8               I
+   #53 = NameAndType        #51:#52       // label:I
+   #54 = Fieldref           #2.#53        // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.label:I
+   #55 = Utf8               kotlin/ResultKt
+   #56 = Class              #55           // kotlin/ResultKt
+   #57 = Utf8               throwOnFailure
+   #58 = Utf8               (Ljava/lang/Object;)V
+   #59 = NameAndType        #57:#58       // throwOnFailure:(Ljava/lang/Object;)V
+   #60 = Methodref          #56.#59       // kotlin/ResultKt.throwOnFailure:(Ljava/lang/Object;)V
+   #61 = NameAndType        #39:#30       // L$0:Ljava/lang/Object;
+   #62 = Fieldref           #2.#61        // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.L$0:Ljava/lang/Object;
+   #63 = Utf8               kotlin/sequences/SequenceScope
+   #64 = Class              #63           // kotlin/sequences/SequenceScope
+   #65 = Utf8               kotlin/sequences/Sequence
+   #66 = Class              #65           // kotlin/sequences/Sequence
+   #67 = Utf8               iterator
+   #68 = Utf8               ()Ljava/util/Iterator;
+   #69 = NameAndType        #67:#68       // iterator:()Ljava/util/Iterator;
+   #70 = InterfaceMethodref #66.#69       // kotlin/sequences/Sequence.iterator:()Ljava/util/Iterator;
+   #71 = Utf8               java/util/Iterator
+   #72 = Class              #71           // java/util/Iterator
+   #73 = Utf8               hasNext
+   #74 = Utf8               ()Z
+   #75 = NameAndType        #73:#74       // hasNext:()Z
+   #76 = InterfaceMethodref #72.#75       // java/util/Iterator.hasNext:()Z
+   #77 = Utf8               next
+   #78 = NameAndType        #77:#48       // next:()Ljava/lang/Object;
+   #79 = InterfaceMethodref #72.#78       // java/util/Iterator.next:()Ljava/lang/Object;
+   #80 = Utf8               kotlin/jvm/functions/Function1
+   #81 = Class              #80           // kotlin/jvm/functions/Function1
+   #82 = Utf8               invoke
+   #83 = NameAndType        #82:#28       // invoke:(Ljava/lang/Object;)Ljava/lang/Object;
+   #84 = InterfaceMethodref #81.#83       // kotlin/jvm/functions/Function1.invoke:(Ljava/lang/Object;)Ljava/lang/Object;
+   #85 = Utf8               java/lang/Boolean
+   #86 = Class              #85           // java/lang/Boolean
+   #87 = Utf8               booleanValue
+   #88 = NameAndType        #87:#74       // booleanValue:()Z
+   #89 = Methodref          #86.#88       // java/lang/Boolean.booleanValue:()Z
+   #90 = Utf8               kotlin/coroutines/Continuation
+   #91 = Class              #90           // kotlin/coroutines/Continuation
+   #92 = NameAndType        #29:#30       // L$1:Ljava/lang/Object;
+   #93 = Fieldref           #2.#92        // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.L$1:Ljava/lang/Object;
+   #94 = Utf8               yield
+   #95 = Utf8               (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+   #96 = NameAndType        #94:#95       // yield:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+   #97 = Methodref          #64.#96       // kotlin/sequences/SequenceScope.yield:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+   #98 = Utf8               kotlin/Unit
+   #99 = Class              #98           // kotlin/Unit
+  #100 = Utf8               INSTANCE
+  #101 = Utf8               Lkotlin/Unit;
+  #102 = NameAndType        #100:#101     // INSTANCE:Lkotlin/Unit;
+  #103 = Fieldref           #99.#102      // kotlin/Unit.INSTANCE:Lkotlin/Unit;
+  #104 = Utf8               java/lang/IllegalStateException
+  #105 = Class              #104          // java/lang/IllegalStateException
+  #106 = Utf8               call to \'resume\' before \'invoke\' with coroutine
+  #107 = String             #106          // call to \'resume\' before \'invoke\' with coroutine
+  #108 = Utf8               (Ljava/lang/String;)V
+  #109 = NameAndType        #8:#108       // "<init>":(Ljava/lang/String;)V
+  #110 = Methodref          #105.#109     // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+  #111 = Utf8               Lkotlin/sequences/SequenceScope;
+  #112 = Utf8               item
+  #113 = Utf8               $result
+  #114 = Utf8               java/lang/Object
+  #115 = Class              #114          // java/lang/Object
+  #116 = Utf8               create
+  #117 = Utf8               (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+  #118 = Utf8               (Ljava/lang/Object;Lkotlin/coroutines/Continuation<*>;)Lkotlin/coroutines/Continuation<Lkotlin/Unit;>;
+  #119 = NameAndType        #8:#9         // "<init>":(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V
+  #120 = Methodref          #2.#119       // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1."<init>":(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V
+  #121 = Utf8               value
+  #122 = Utf8               (Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+  #123 = Utf8               (Lkotlin/sequences/SequenceScope<-TT;>;Lkotlin/coroutines/Continuation<-Lkotlin/Unit;>;)Ljava/lang/Object;
+  #124 = NameAndType        #116:#117     // create:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+  #125 = Methodref          #2.#124       // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.create:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+  #126 = NameAndType        #27:#28       // invokeSuspend:(Ljava/lang/Object;)Ljava/lang/Object;
+  #127 = Methodref          #2.#126       // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.invokeSuspend:(Ljava/lang/Object;)Ljava/lang/Object;
+  #128 = Utf8               p1
+  #129 = Utf8               p2
+  #130 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #131 = NameAndType        #82:#122      // invoke:(Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+  #132 = Methodref          #2.#131       // pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1.invoke:(Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+  #133 = Utf8               Lkotlin/sequences/Sequence<TT;>;
+  #134 = Utf8               Lkotlin/jvm/functions/Function1<TT;Ljava/lang/Boolean;>;
+  #135 = Utf8               Lkotlin/Metadata;
+  #136 = Utf8               mv
+  #137 = Integer            2
+  #138 = Integer            1
+  #139 = Utf8               k
+  #140 = Integer            3
+  #141 = Utf8               xi
+  #142 = Integer            48
+  #143 = Utf8               d1
+  #144 = Utf8               \u0000\f\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\u0010\u0000\u001a\u00020\u0001\"\u0004\b\u0000\u0010\u0002*\b\u0012\u0004\u0012\u0002H\u00020\u0003H\n
+  #145 = Utf8               d2
+  #146 = Utf8               <anonymous>
+  #147 = Utf8
+  #148 = Utf8               T
+  #149 = Utf8               pt/isel/lae/li41n/Queries1Kt
+  #150 = Class              #149          // pt/isel/lae/li41n/Queries1Kt
+  #151 = Utf8               lazyFilterWithSequence1
+  #152 = Utf8               (Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;
+  #153 = NameAndType        #151:#152     // lazyFilterWithSequence1:(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;
+  #154 = Utf8               Signature
+  #155 = Utf8               Code
+  #156 = Utf8               LocalVariableTable
+  #157 = Utf8               StackMapTable
+  #158 = Utf8               LineNumberTable
+  #159 = Utf8               InnerClasses
+  #160 = Utf8               EnclosingMethod
+  #161 = Utf8               SourceFile
+  #162 = Utf8               RuntimeVisibleAnnotations
+{
+  java.lang.Object L$1;
+    descriptor: Ljava/lang/Object;
+    flags: (0x0000)
+
+  int label;
+    descriptor: I
+    flags: (0x0000)
+
+  private java.lang.Object L$0;
+    descriptor: Ljava/lang/Object;
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+
+  final kotlin.sequences.Sequence<T> $this_lazyFilterWithSequence1;
+    descriptor: Lkotlin/sequences/Sequence;
+    flags: (0x1010) ACC_FINAL, ACC_SYNTHETIC
+    Signature: #133                         // Lkotlin/sequences/Sequence<TT;>;
+
+  final kotlin.jvm.functions.Function1<T, java.lang.Boolean> $predicate;
+    descriptor: Lkotlin/jvm/functions/Function1;
+    flags: (0x1010) ACC_FINAL, ACC_SYNTHETIC
+    Signature: #134                         // Lkotlin/jvm/functions/Function1<TT;Ljava/lang/Boolean;>;
+
+  pt.isel.lae.li41n.Queries1Kt$lazyFilterWithSequence1$1(kotlin.sequences.Sequence<? extends T>, kotlin.jvm.functions.Function1<? super T, java.lang.Boolean>, kotlin.coroutines.Continuation<? super pt.isel.lae.li41n.Queries1Kt$lazyFilterWithSequence1$1>);
+    descriptor: (Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V
+    flags: (0x0000)
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_0
+         1: aload_1
+         2: putfield      #14                 // Field $this_lazyFilterWithSequence1:Lkotlin/sequences/Sequence;
+         5: aload_0
+         6: aload_2
+         7: putfield      #18                 // Field $predicate:Lkotlin/jvm/functions/Function1;
+        10: aload_0
+        11: iconst_2
+        12: aload_3
+        13: invokespecial #21                 // Method kotlin/coroutines/jvm/internal/RestrictedSuspendLambda."<init>":(ILkotlin/coroutines/Continuation;)V
+        16: return
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lpt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1;
+            0      17     1 $receiver   Lkotlin/sequences/Sequence;
+            0      17     2 $predicate   Lkotlin/jvm/functions/Function1;
+            0      17     3 $completion   Lkotlin/coroutines/Continuation;
+    Signature: #10                          // (Lkotlin/sequences/Sequence<+TT;>;Lkotlin/jvm/functions/Function1<-TT;Ljava/lang/Boolean;>;Lkotlin/coroutines/Continuation<-Lpt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1;>;)V
+
+  public final java.lang.Object invokeSuspend(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Ljava/lang/Object;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=5, locals=6, args_size=2
+         0: invokestatic  #50                 // Method kotlin/coroutines/intrinsics/IntrinsicsKt.getCOROUTINE_SUSPENDED:()Ljava/lang/Object;
+         3: astore        5
+         5: aload_0
+         6: getfield      #54                 // Field label:I
+         9: tableswitch   { // 0 to 1
+                       0: 32
+                       1: 125
+                 default: 154
+            }
+        32: aload_1
+        33: invokestatic  #60                 // Method kotlin/ResultKt.throwOnFailure:(Ljava/lang/Object;)V
+        36: aload_0
+        37: getfield      #62                 // Field L$0:Ljava/lang/Object;
+        40: checkcast     #64                 // class kotlin/sequences/SequenceScope
+        43: astore_2
+        44: aload_0
+        45: getfield      #14                 // Field $this_lazyFilterWithSequence1:Lkotlin/sequences/Sequence;
+        48: invokeinterface #70,  1           // InterfaceMethod kotlin/sequences/Sequence.iterator:()Ljava/util/Iterator;
+        53: astore_3
+        54: aload_3
+        55: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        60: ifeq          150
+        63: aload_3
+        64: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        69: astore        4
+        71: aload_0
+        72: getfield      #18                 // Field $predicate:Lkotlin/jvm/functions/Function1;
+        75: aload         4
+        77: invokeinterface #84,  2           // InterfaceMethod kotlin/jvm/functions/Function1.invoke:(Ljava/lang/Object;)Ljava/lang/Object;
+        82: checkcast     #86                 // class java/lang/Boolean
+        85: invokevirtual #89                 // Method java/lang/Boolean.booleanValue:()Z
+        88: ifeq          54
+        91: aload_2
+        92: aload         4
+        94: aload_0
+        95: checkcast     #91                 // class kotlin/coroutines/Continuation
+        98: aload_0
+        99: aload_2
+       100: putfield      #62                 // Field L$0:Ljava/lang/Object;
+       103: aload_0
+       104: aload_3
+       105: putfield      #93                 // Field L$1:Ljava/lang/Object;
+       108: aload_0
+       109: iconst_1
+       110: putfield      #54                 // Field label:I
+       113: invokevirtual #97                 // Method kotlin/sequences/SequenceScope.yield:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+       116: dup
+       117: aload         5
+       119: if_acmpne     146
+       122: aload         5
+       124: areturn
+       125: aload_0
+       126: getfield      #93                 // Field L$1:Ljava/lang/Object;
+       129: checkcast     #72                 // class java/util/Iterator
+       132: astore_3
+       133: aload_0
+       134: getfield      #62                 // Field L$0:Ljava/lang/Object;
+       137: checkcast     #64                 // class kotlin/sequences/SequenceScope
+       140: astore_2
+       141: aload_1
+       142: invokestatic  #60                 // Method kotlin/ResultKt.throwOnFailure:(Ljava/lang/Object;)V
+       145: aload_1
+       146: pop
+       147: goto          54
+       150: getstatic     #103                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+       153: areturn
+       154: new           #105                // class java/lang/IllegalStateException
+       157: dup
+       158: ldc           #107                // String call to \'resume\' before \'invoke\' with coroutine
+       160: invokespecial #110                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+       163: athrow
+      StackMapTable: number_of_entries = 6
+        frame_type = 255 /* full_frame */
+          offset_delta = 32
+          locals = [ class pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1, class java/lang/Object, top, top, top, class java/lang/Object ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 21
+          locals = [ class pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1, class java/lang/Object, class kotlin/sequences/SequenceScope, class java/util/Iterator, top, class java/lang/Object ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 70
+          locals = [ class pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1, class java/lang/Object, top, top, top, class java/lang/Object ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 20
+          locals = [ class pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1, class java/lang/Object, class kotlin/sequences/SequenceScope, class java/util/Iterator, top, class java/lang/Object ]
+          stack = [ class java/lang/Object ]
+        frame_type = 3 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 3
+          locals = [ class pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1, class java/lang/Object, top, top, top, class java/lang/Object ]
+          stack = []
+      LineNumberTable:
+        line 4: 3
+        line 5: 44
+        line 6: 71
+        line 7: 91
+        line 4: 122
+        line 7: 146
+        line 10: 150
+        line 4: 154
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           44      81     2 $this$sequence   Lkotlin/sequences/SequenceScope;
+          141      13     2 $this$sequence   Lkotlin/sequences/SequenceScope;
+           71      45     4  item   Ljava/lang/Object;
+            0     164     0  this   Lpt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1;
+           36     118     1 $result   Ljava/lang/Object;
+
+  public final kotlin.coroutines.Continuation<kotlin.Unit> create(java.lang.Object, kotlin.coroutines.Continuation<?>);
+    descriptor: (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=5, locals=4, args_size=3
+         0: new           #2                  // class pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1
+         3: dup
+         4: aload_0
+         5: getfield      #14                 // Field $this_lazyFilterWithSequence1:Lkotlin/sequences/Sequence;
+         8: aload_0
+         9: getfield      #18                 // Field $predicate:Lkotlin/jvm/functions/Function1;
+        12: aload_2
+        13: invokespecial #120                // Method "<init>":(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V
+        16: astore_3
+        17: aload_3
+        18: aload_1
+        19: putfield      #62                 // Field L$0:Ljava/lang/Object;
+        22: aload_3
+        23: checkcast     #91                 // class kotlin/coroutines/Continuation
+        26: areturn
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      27     0  this   Lpt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1;
+            0      27     1 value   Ljava/lang/Object;
+            0      27     2 $completion   Lkotlin/coroutines/Continuation;
+    Signature: #118                         // (Ljava/lang/Object;Lkotlin/coroutines/Continuation<*>;)Lkotlin/coroutines/Continuation<Lkotlin/Unit;>;
+
+  public final java.lang.Object invoke(kotlin.sequences.SequenceScope<? super T>, kotlin.coroutines.Continuation<? super kotlin.Unit>);
+    descriptor: (Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokevirtual #125                // Method create:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+         6: checkcast     #2                  // class pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1
+         9: getstatic     #103                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        12: invokevirtual #127                // Method invokeSuspend:(Ljava/lang/Object;)Ljava/lang/Object;
+        15: areturn
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lpt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1;
+            0      16     1    p1   Lkotlin/sequences/SequenceScope;
+            0      16     2    p2   Lkotlin/coroutines/Continuation;
+    Signature: #123                         // (Lkotlin/sequences/SequenceScope<-TT;>;Lkotlin/coroutines/Continuation<-Lkotlin/Unit;>;)Ljava/lang/Object;
+
+  public java.lang.Object invoke(java.lang.Object, java.lang.Object);
+    descriptor: (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    flags: (0x1041) ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: checkcast     #64                 // class kotlin/sequences/SequenceScope
+         5: aload_2
+         6: checkcast     #91                 // class kotlin/coroutines/Continuation
+         9: invokevirtual #132                // Method invoke:(Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+        12: areturn
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lpt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1;
+            0      13     1    p1   Ljava/lang/Object;
+            0      13     2    p2   Ljava/lang/Object;
+}
+InnerClasses:
+  static final #2;                        // class pt/isel/lae/li41n/Queries1Kt$lazyFilterWithSequence1$1
+EnclosingMethod: #150.#153              // pt.isel.lae.li41n.Queries1Kt.lazyFilterWithSequence1
+Signature: #3                           // Lkotlin/coroutines/jvm/internal/RestrictedSuspendLambda;Lkotlin/jvm/functions/Function2<Lkotlin/sequences/SequenceScope<-TT;>;Lkotlin/coroutines/Continuation<-Lkotlin/Unit;>;Ljava/lang/Object;>;
+SourceFile: "Queries1.kt"
+RuntimeVisibleAnnotations:
+  0: #31(#32=s#33,#34=[I#35],#36=[I#37],#38=[s#39],#40=[s#41],#42=s#27,#43=s#44)
+    kotlin.coroutines.jvm.internal.DebugMetadata(
+      f="Queries1.kt"
+      l=[7]
+      i=[0]
+      s=["L$0"]
+      n=["$this$sequence"]
+      m="invokeSuspend"
+      c="pt.isel.lae.li41n.Queries1Kt$lazyFilterWithSequence1$1"
+    )
+  1: #135(#136=[I#137,I#138,I#37],#139=I#140,#141=I#142,#143=[s#144],#145=[s#146,s#147,s#148,s#111])
+    kotlin.Metadata(
+      mv=[2,1,0]
+      k=3
+      xi=48
+      d1=["\u0000\f\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\u0010\u0000\u001a\u00020\u0001\"\u0004\b\u0000\u0010\u0002*\b\u0012\u0004\u0012\u0002H\u00020\u0003H\n"]
+      d2=["<anonymous>","","T","Lkotlin/sequences/SequenceScope;"]
+    )
