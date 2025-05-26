@@ -84,7 +84,7 @@ fun <S: Any, D : Any> buildMapperClassFile(
         ClassFile.of().build(mapperCD) { clb ->
             clb
                 .withFlags(ACC_PUBLIC)
-                .withInterfaceSymbols(ClassDesc.of(PACKAGE_NAME, "Mapper"))
+                .withInterfaceSymbols(Mapper::class.descriptor())
                 .createConstructor(mappingDyn)
                 .createMapToObject(mappingDyn)
                 .createMapToStronglyTyped(mappingDyn)
@@ -99,12 +99,11 @@ fun <S: Any, D : Any> buildMapperClassFile(
 
 private fun ClassBuilder.createConstructor(mappingDyn: MappingDynamic): ClassBuilder {
     val complexParams = mappingDyn.paramToProp.filter { (param, prop) -> param.type.isComplex() }
-    var fieldNamesParamAndProps = complexParams.map { (param, prop) ->
+    complexParams.forEach() { (param, prop) ->
 
         withField(param.MapperName(), Mapper::class.descriptor()) {
             it.withFlags(ACC_PRIVATE or ACC_FINAL)
         }
-        Pair(param, prop)
     }
 
     withMethod(INIT_NAME, MTD_void, ACC_PUBLIC) { mb ->
@@ -112,7 +111,7 @@ private fun ClassBuilder.createConstructor(mappingDyn: MappingDynamic): ClassBui
             cob
                 .aload(0)
                 .invokespecial(CD_Object, INIT_NAME, MTD_void)
-                .setMappers(fieldNamesParamAndProps, mappingDyn)
+                .setMappers(complexParams, mappingDyn)
                 .return_()
         }
     }
@@ -160,8 +159,6 @@ private fun ClassBuilder.createMapToObject(mappingDyn: MappingDynamic): ClassBui
 
 private fun ClassBuilder.createMapToStronglyTyped(mappingDyn: MappingDynamic): ClassBuilder {
     val methodName = "mapTo"
-
-
     withMethod(methodName, MethodTypeDesc.of(mappingDyn.dstRep.descriptor(), listOf(mappingDyn.srcRep.descriptor())), ACC_PUBLIC) {
         mb -> mb.withCode {
 

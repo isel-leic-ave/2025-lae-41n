@@ -14,7 +14,7 @@ class CourseExtWithTeacherToCourseInternalWithTeacherTests {
         fun mappers() =
             listOf<Mapper<CourseExternalWithTeacher, CourseInternalWithTeacher>>(
 //                SimpleMapperReflect(CourseExternalWithTeacher::class, CourseInternalWithTeacher::class) as Mapper<CourseExternalWithTeacher, CourseInternalWithTeacher>,
-//                MapperDynCourseExtWithTeacherToCourseInternalWithTeacher(),
+                MapperDynCourseExtWithTeacherToCourseInternalWithTeacher(),
                 loadDynamicMapper(CourseExternalWithTeacher::class, CourseInternalWithTeacher::class)
             )
 
